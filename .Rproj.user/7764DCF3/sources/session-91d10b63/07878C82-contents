@@ -1,0 +1,6 @@
+
+# map
+res = map(arr, function(i){
+ print(i) 
+  return(i * 2)
+})

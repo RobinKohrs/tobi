@@ -37,9 +37,9 @@ hereR::set_key(apiKey)
 
 # setup array for sroting isochrons
 
-results = map(1:nrow(cents) %>% head(n=20), function(j){
+results = map(1:nrow(cents), function(j){
 
-    cat(glue("{j} / 20"), "\r")
+    cat(glue("{j} / 250"), "\r")
 
     # j is the row index
     row = cents[j, ]
@@ -74,7 +74,8 @@ results = map(1:nrow(cents) %>% head(n=20), function(j){
 # bind all rows together --------------------------------------------------
 all_isochrones = bind_rows(results)
 
-
+# save all isochrones
+write_sf(all_isochrones, "~/Desktop/test.geojson")
 # fake points (centroids) -------------------------------------------------------------
 
 # for each isochrone find all the points within

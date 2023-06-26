@@ -78,7 +78,24 @@ all_isochrones = bind_rows(results)
 write_sf(all_isochrones, "~/Desktop/test.geojson")
 # fake points (centroids) -------------------------------------------------------------
 
-# for each isochrone find all the points within
+
+
+# create difference between isochrone and zbez ----------------------------
+
+# test
+# a = read_sf("~/Desktop/deelte/one.geojson")
+# b = read_sf("~/Desktop/deelte/two.geojson")
+
+# ignore world as sphere!
+# sf::sf_use_s2(use_s2 = F)
+
+# example for diff between isochrone and zbez
+# symDif = st_sym_difference(a,b)
+
+
+
+
+# for each cutted isochrone find all the points within ------------------------
 intersecting_points_for_each_isochrone = map(1:nrow(all_isochrones), function(rowIndex){
 
   row = all_isochrones[rowIndex, ]
@@ -97,20 +114,7 @@ intersecting_points_for_each_isochrone = map(1:nrow(all_isochrones), function(ro
 })
 
 
-# plot --------------------------------------------------------------------
-df_all_points = bind_rows(intersecting_points_for_each_isochrone)
-mapview(df_all_points, zcol="isochrone_id") + mapview(all_isochrones)
 
-
-# symetrical difference in R ----------------------------------------------
-a = read_sf("~/Desktop/deelte/one.geojson")
-b = read_sf("~/Desktop/deelte/two.geojson")
-
-# ignore world as sphere!
-sf::sf_use_s2(use_s2 = F)
-
-# example for diff between isochrone and zbez
-symDif = st_sym_difference(a,b)
 
 
 

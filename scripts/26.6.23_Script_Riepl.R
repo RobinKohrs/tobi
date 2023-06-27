@@ -131,7 +131,6 @@ library(jsonlite)
 url <- "https://xyz.api.here.com/hub/spaces/20138133/search"
 
 # Set the API key in the headers
-headers <- c("Authorization" = "Bearer 0kOQyCByMkYR55j-46uA1tTpuryTSjnT4lI3vj7TvwY")
 
 # Set the query parameters
 params <- list(q = "Vienna")  # Search for data in Vienna
